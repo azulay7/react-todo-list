@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Todo from './Todo'
 import TodoForm from './TodoForm'
+import UserMode from './UserMode'
+import { UserModeContext } from '../contexts/UserModeContext';
 
 function TodoList() {
   const [todos, setTodos] = useState([])
@@ -37,14 +39,23 @@ function TodoList() {
     const removeArr = [...todos].filter(todo => todo.id !== id)
     setTodos(removeArr);
   }
+
+  const isUserEdit = () => {
+    return todos.some(todo => todo.isSelected);
+  }
   return (
-    <div>
-      <h1 className='todo-header'>What's the Plan for Today </h1>
-      <TodoForm onSubmit={addTodo}></TodoForm>
-      {todos.map((todo,index)=>
-        <Todo todo={todo} index={index} selectTodo={selectTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
-      )}
-    </div>
+    <UserModeContext.Provider value={isUserEdit()}>
+      <div>
+        <h1 className='todo-header'>What's the Plan for Today </h1>
+        <TodoForm onSubmit={addTodo}></TodoForm>
+        {todos.map((todo, index) =>
+          <Todo todo={todo} index={index} selectTodo={selectTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
+        )}
+        <div className='user-mode-container'>
+          <UserMode style={{ margin: '5rem' }}></UserMode>
+        </div>
+      </div>
+    </UserModeContext.Provider>
   )
 }
 

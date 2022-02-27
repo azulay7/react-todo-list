@@ -77,7 +77,9 @@ body {
   flex-direction: row;
   position: relative;
 }
-
+.user-mode-container{
+  margin: 5rem;
+}
 .todo-row {
   display: flex;
   justify-content: space-between;
