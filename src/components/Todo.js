@@ -4,7 +4,7 @@ import { RiEdit2Line } from 'react-icons/ri'
 import TodoForm from './TodoForm'
 
 
-function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
+function Todo({ todo, index, completeTodo, removeTodo, updateTodo }) {
     const [edit, setEdit] = useState(
         {
             id: null,
@@ -19,11 +19,11 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
         })
     }
 
-    if(edit.id){
+    if (edit.id) {
         return <TodoForm edit={edit} onSubmit={submitUpdate}></TodoForm>
     }
 
-    return todos.map((todo, index) => (
+    return (
         <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
             key={index}>
             <div key={todo.id} onClick={() => completeTodo(todo.id)}>
@@ -35,7 +35,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
                 </RiCloseCircleLine>
                 <RiEdit2Line onClick={() => setEdit(todo)}
                     className='edit-icon'></RiEdit2Line> </div>
-        </div>))
+        </div>)
 }
 
 export default Todo
