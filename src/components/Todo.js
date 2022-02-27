@@ -19,19 +19,24 @@ function Todo({ todo, index, completeTodo, removeTodo, updateTodo }) {
         })
     }
 
-    if (edit.id) {
-        return <TodoForm edit={edit} onSubmit={submitUpdate}></TodoForm>
-    }
+    // if (edit.id) {
+    //     return <TodoForm edit={edit} onSubmit={submitUpdate}></TodoForm>
+    // }
 
     return (
         <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} onClick={() => completeTodo(todo.id)} key={index}>
-            {todo.text}
+            {
+                edit.id ?
+                    <TodoForm edit={edit} onSubmit={submitUpdate}/> :
+                    <div>{todo.text}</div>
+            }
+
             <div className='icons'>
                 <RiCloseCircleLine
                     onClick={() => removeTodo(todo.id)}
                     className='delete-icon'>
                 </RiCloseCircleLine>
-                <RiEdit2Line onClick={() => setEdit(todo)}
+                <RiEdit2Line onClick={() =>{ setEdit(todo)}}
                     className='edit-icon'></RiEdit2Line> </div>
         </div>)
 }
