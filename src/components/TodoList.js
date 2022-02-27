@@ -43,6 +43,15 @@ function TodoList() {
   const isUserEdit = () => {
     return todos.some(todo => todo.isSelected);
   }
+
+  const handleSwitchChange = () => {
+    const updatedTodos = todos.map(todo => {
+      todo.isSelected = false
+      return todo
+
+    })
+    setTodos(updatedTodos)
+  }
   return (
     <UserModeContext.Provider value={isUserEdit()}>
       <div>
@@ -52,7 +61,7 @@ function TodoList() {
           <Todo todo={todo} index={index} selectTodo={selectTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
         )}
         <div className='user-mode-container'>
-          <UserMode style={{ margin: '5rem' }}></UserMode>
+          <UserMode handleSwitchChange={handleSwitchChange} style={{ margin: '5rem' }}></UserMode>
         </div>
       </div>
     </UserModeContext.Provider>
