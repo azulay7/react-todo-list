@@ -24,10 +24,9 @@ function Todo({ todo, index, completeTodo, removeTodo, updateTodo }) {
     }
 
     return (
-        <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-            key={index}>
-            <div key={todo.id} onClick={() => completeTodo(todo.id)}>
-                {todo.text}</div>
+        <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} onClick={() => completeTodo(todo.id)}
+            key={index}>  {todo.text}
+            
             <div className='icons'>
                 <RiCloseCircleLine
                     onClick={() => removeTodo(todo.id)}
