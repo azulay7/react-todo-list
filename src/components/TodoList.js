@@ -20,10 +20,10 @@ function TodoList() {
       return
     }
 
-    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)))
+    setTodos(prevTodos => prevTodos.map(item => (item.id === todoId ? newValue : item)))
   }
   const completeTodo = id => {
-    let updatedTodos = todos.map(todo => {
+    const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.isComplete = !todo.isComplete;
       }
