@@ -21,8 +21,8 @@ body {
   padding-bottom: 32px;
 }
 
-h1 {
-  margin: 32px 0;
+.todo-header {
+  margin: 32px 1rem;
   color: #fff;
   font-size: 24px;
 }

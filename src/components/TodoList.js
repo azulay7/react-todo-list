@@ -39,7 +39,7 @@ function TodoList() {
   }
   return (
     <div>
-      <h1>What's the Plan for Today </h1>
+      <h1 className='todo-header'>What's the Plan for Today </h1>
       <TodoForm onSubmit={addTodo}></TodoForm>
       {todos.map((todo,index)=>
         <Todo todo={todo} index={index} completeTodo={completeTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
