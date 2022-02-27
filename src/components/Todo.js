@@ -23,7 +23,6 @@ function Todo({ todo, index, selectTodo, removeTodo, updateTodo }) {
         if (edit?.id) {
             selectTodo(todo.id)
         } 
-
     }, [edit])
 
     return (
