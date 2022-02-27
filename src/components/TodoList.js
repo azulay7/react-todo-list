@@ -19,10 +19,10 @@ function TodoList() {
     if (!newValue.text || /^\s*$/.test(newValue.text)) {
       return
     }
-
     setTodos(prevTodos => prevTodos.map(item => (item.id === todoId ? newValue : item)))
   }
-  const editTodo = id => {
+
+  const selectTodo = id => {
     const updatedTodos = todos.map(todo => {
       if (todo.id === id) {
         todo.isSelected = !todo.isSelected;
@@ -42,7 +42,7 @@ function TodoList() {
       <h1 className='todo-header'>What's the Plan for Today </h1>
       <TodoForm onSubmit={addTodo}></TodoForm>
       {todos.map((todo,index)=>
-        <Todo todo={todo} index={index} editTodo={editTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
+        <Todo todo={todo} index={index} selectTodo={selectTodo} removeTodo={removeTodo} updateTodo={updateTodo} />
       )}
     </div>
   )
