@@ -91,6 +91,11 @@ body {
   width: 90%;
 }
 
+.todo-row.selected{
+  border: 2px solid #a1c1d7;
+
+}
+
 .todo-row:nth-child(4n + 1) {
   background: linear-gradient(90deg, rgba(93, 12, 255, 1) 0%, rgba(155, 0, 250, 1) 100%);
 }
